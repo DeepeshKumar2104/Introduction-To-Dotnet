@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center my-4">Product List</h1>
+
+<p>
+    <a class="btn btn-primary mb-3" asp-action="Create">Create New Product</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supplier)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StockQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Supplier)
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-info" asp-action="Edit" asp-route-id="@item.ProductId">Edit</a>
+                    <a class="btn btn-sm btn-success" asp-action="Details" asp-route-id="@item.ProductId">Details</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
