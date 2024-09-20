@@ -58,6 +58,8 @@ namespace CodefirstApproach.Controllers
             return View(proddata);
         }
         
+        
+
         public async Task<IActionResult> Edit(int ? id,Product prod)
         {
             if(id==null || productdb.ProductTable == null)  return NotFound();
