@@ -1,4 +1,5 @@
 using CodefirstApproach.Models;
+using CodefirstApproach.Reposit;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationProduct>(option => option.UseMySql(builder.Configuration.GetConnectionString("db"), new MySqlServerVersion(new Version(8, 0, 1))));
 var app = builder.Build();
+
+builder.Services.AddScoped<StudentRepository>();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

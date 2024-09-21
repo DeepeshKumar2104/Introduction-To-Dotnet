@@ -1,4 +1,5 @@
 using CodefirstApproach.Models;
+using CodefirstApproach.Reposit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ namespace CodefirstApproach.Controllers
     public class HomeController : Controller
     {
         private readonly ApplicationProduct productdb;
+        private readonly StudentRepository repo;
 
         //private readonly ILogger<HomeController> _logger;
 
@@ -17,9 +19,19 @@ namespace CodefirstApproach.Controllers
         //    _logger = logger;
         //}
 
-        public HomeController(ApplicationProduct productdb)
+        public HomeController(ApplicationProduct productdb,StudentRepository repo)
         {
             this.productdb = productdb;
+            repo = new StudentRepository();
+        }
+        public List<Product> getAllStudents()
+        {
+            return repo.GetAllProduct();
+        }
+
+        public Product getByID(int id)
+        {
+            return repo.GetAllProductbyId(id);
         }
 
         public async Task<IActionResult> Index()
